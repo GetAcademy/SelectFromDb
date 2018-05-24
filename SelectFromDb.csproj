@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Select.cs" />
     <Compile Include="Data\SelectStudent.cs" />
     <Compile Include="DbModels\Student.cs" />
     <Compile Include="Program.cs" />
