@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using SelectFromDb.Data;
+using SelectFromDb.DbModels;
 
 namespace SelectFromDb
 {
@@ -14,10 +15,22 @@ namespace SelectFromDb
             using (var connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                var selectStudent = new Select();
-                var student = selectStudent.GetStudent(connection, 2);
-                Console.WriteLine(student);
+                RunDemo(connection);
                 Console.ReadKey();
+            }
+        }
+
+        private static void RunDemo(SqlConnection connection)
+        {
+            var selectStudent = new SelectStudent();
+
+            Console.WriteLine("Kjører GetStudent():");
+            Console.WriteLine(selectStudent.GetStudent(connection, 2));
+            Console.WriteLine("Kjører GetAllStudents():");
+            var students = selectStudent.GetAllStudents(connection);
+            foreach (var student in students)
+            {
+                Console.WriteLine(student);
             }
         }
     }
