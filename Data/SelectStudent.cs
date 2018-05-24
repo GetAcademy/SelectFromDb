@@ -6,7 +6,7 @@ using SelectFromDb.DbModels;
 
 namespace SelectFromDb.Data
 {
-    public class Select
+    public class SelectStudent
     {
         public Student GetStudent(SqlConnection connection, int id)
         {
