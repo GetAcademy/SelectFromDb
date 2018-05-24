@@ -1,0 +1,7 @@
+c:\users\terje\source\repos\SelectFromDb\SelectFromDb\bin\Debug\SelectFromDb.exe.config
+c:\users\terje\source\repos\SelectFromDb\SelectFromDb\bin\Debug\SelectFromDb.exe
+c:\users\terje\source\repos\SelectFromDb\SelectFromDb\bin\Debug\SelectFromDb.pdb
+c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.csprojResolveAssemblyReference.cache
+c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.csproj.CoreCompileInputs.cache
+c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.exe
+c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.pdb
