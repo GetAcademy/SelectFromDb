@@ -1,25 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace SelectFromDb.Data
 {
     public class Select<TDbModel> where TDbModel : new()
     {
         private readonly PropertyInfo[] _properties;
+        private readonly Type _dbModelType;
 
         public Select()
         {
-            var dbModelType = typeof(TDbModel);
-            _properties = dbModelType.GetProperties();
+            _dbModelType = typeof(TDbModel);
+            _properties = _dbModelType.GetProperties();
+        }
+
+        public string GetSelectAllSql()
+        {
+            return CreateSelectStringBuilder().ToString();
+        }
+
+        public string GetSelectByIdSql()
+        {
+            var sql = CreateSelectStringBuilder();
+            sql.Append(" WHERE Id = @id ");
+            return sql.ToString();
+        }
+
+        private StringBuilder CreateSelectStringBuilder()
+        {
+            var sql = new StringBuilder();
+            foreach (var property in _properties)
+            {
+                if (sql.Length > 0) sql.Append(",");
+                sql.Append(property.Name);
+            }
+            sql.Insert(0, "SELECT ");
+            sql.Append(" FROM ");
+            sql.Append(_dbModelType.Name);
+            sql.Append(" ");
+            return sql;
         }
 
         public TDbModel GetStudent(SqlConnection connection, int id)
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "Select Id, Navn From Student Where Id = @id";
+                command.CommandText = GetSelectByIdSql();
                 command.Parameters.AddWithValue("id", id);
                 return ReadToList(command).FirstOrDefault();
             }
@@ -29,7 +59,7 @@ namespace SelectFromDb.Data
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "Select Id, Navn From Student";
+                command.CommandText = GetSelectAllSql();
                 return ReadToList(command);
             }
         }

@@ -5,3 +5,10 @@ c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.csp
 c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.csproj.CoreCompileInputs.cache
 c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.exe
 c:\users\terje\source\repos\SelectFromDb\SelectFromDb\obj\Debug\SelectFromDb.pdb
+C:\git\SelectFromDb\bin\Debug\SelectFromDb.exe.config
+C:\git\SelectFromDb\bin\Debug\SelectFromDb.exe
+C:\git\SelectFromDb\bin\Debug\SelectFromDb.pdb
+C:\git\SelectFromDb\obj\Debug\SelectFromDb.csprojResolveAssemblyReference.cache
+C:\git\SelectFromDb\obj\Debug\SelectFromDb.csproj.CoreCompileInputs.cache
+C:\git\SelectFromDb\obj\Debug\SelectFromDb.exe
+C:\git\SelectFromDb\obj\Debug\SelectFromDb.pdb
