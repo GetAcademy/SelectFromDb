@@ -38,6 +38,13 @@ namespace SelectFromDb
             {
                 Console.WriteLine(student);
             }
+            Console.WriteLine("Kjører MetadataSelect.GetAllTables():");
+            var metadataSelect = new MetadataSelect();
+            var tables = metadataSelect.GetAllTables(connection);
+            foreach (var table in tables)
+            {
+                Console.WriteLine(table);
+            }
         }
     }
 }
