@@ -6,9 +6,9 @@ using SelectFromDb.DbModels;
 
 namespace SelectFromDb
 {
-    class Program
+    public class Program
     {
-        static string ConnectionString => ConfigurationManager.ConnectionStrings["TestDb"].ConnectionString;
+        public static string ConnectionString => ConfigurationManager.ConnectionStrings["TestDb"].ConnectionString;
 
         static void Main(string[] args)
         {

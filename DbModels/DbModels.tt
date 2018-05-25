@@ -1,6 +1,10 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
-<#@ assembly name="$(SolutionDir)\MyProject\bin\Debug\SomeLibrary.Dll" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="c:\git\SelectFromDb\bin\Debug\SelectFromDb.Exe" #>
+<#@ import namespace="SelectFromDb.Data" #>
+<#@ import namespace="SelectFromDb" #>
+<#@ import namespace="System.Data.SqlClient" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
@@ -8,11 +12,16 @@
 
 namespace SelectFromDb.DbModels
 {
-
-// $(SolutionDir)
-    public class Studentx
-    {
-        public int Id { get; set; }
-        public string Navn { get; set; }
-    }
+<#
+var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=getitdemodb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+using (var connection = new SqlConnection(connectionString))
+{
+connection.Open();
+var tables = new MetadataSelect().GetAllTables(connection);
+foreach(var table in tables) { 
+	#>
+	class <#= table #> {}
+	<# }
+}
+#>
 }

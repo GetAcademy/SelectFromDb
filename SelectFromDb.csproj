@@ -46,14 +46,14 @@
     <Compile Include="Data\MetadataSelect.cs" />
     <Compile Include="Data\Select.cs" />
     <Compile Include="Data\SelectStudent.cs" />
-    <Compile Include="DbModels\Student.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DbModels\DbModels.cs">
+    <Compile Include="DbModels\DbModels1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModels.tt</DependentUpon>
     </Compile>
+    <Compile Include="DbModels\Student.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -61,7 +61,7 @@
   <ItemGroup>
     <Content Include="DbModels\DbModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbModels.cs</LastGenOutput>
+      <LastGenOutput>DbModels1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>
