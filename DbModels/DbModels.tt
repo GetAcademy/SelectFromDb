@@ -16,12 +16,12 @@ namespace SelectFromDb.DbModels
 var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=getitdemodb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 using (var connection = new SqlConnection(connectionString))
 {
-connection.Open();
-var tables = new MetadataSelect().GetAllTables(connection);
-foreach(var table in tables) { 
-	#>
+	connection.Open();
+	var tables = new MetadataSelect().GetAllTables(connection);
+	foreach(var table in tables) { 
+#>
 	class <#= table #> {}
-	<# }
-}
+<#		}
+	}
 #>
 }
