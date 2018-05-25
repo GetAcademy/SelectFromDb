@@ -30,7 +30,7 @@ namespace SelectFromDb.Data
             return sql.ToString();
         }
 
-        private StringBuilder CreateSelectStringBuilder()
+        protected StringBuilder CreateSelectStringBuilder()
         {
             var sql = new StringBuilder();
             foreach (var property in _properties)
@@ -45,7 +45,7 @@ namespace SelectFromDb.Data
             return sql;
         }
 
-        public TDbModel GetStudent(SqlConnection connection, int id)
+        public TDbModel GetOne(SqlConnection connection, int id)
         {
             using (var command = connection.CreateCommand())
             {
@@ -55,11 +55,24 @@ namespace SelectFromDb.Data
             }
         }
 
-        public List<TDbModel> GetAllStudents(SqlConnection connection)
+        public List<TDbModel> GetMultipleWhere(SqlConnection connection, string whereSql)
+        {
+            var builder = CreateSelectStringBuilder();
+            builder.Append(" WHERE ");
+            builder.Append(whereSql);
+            return GetMultiple(connection, builder.ToString());
+        }
+
+        public List<TDbModel> GetAll(SqlConnection connection)
+        {
+            return GetMultiple(connection, GetSelectAllSql());
+        }
+
+        public List<TDbModel> GetMultiple(SqlConnection connection, string sql)
         {
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = GetSelectAllSql();
+                command.CommandText = sql;
                 return ReadToList(command);
             }
         }

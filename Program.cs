@@ -24,10 +24,16 @@ namespace SelectFromDb
         {
             var selectStudent = new SelectStudent();
 
-            Console.WriteLine("Kjører GetStudent():");
-            Console.WriteLine(selectStudent.GetStudent(connection, 2));
-            Console.WriteLine("Kjører GetAllStudents():");
-            var students = selectStudent.GetAllStudents(connection);
+            Console.WriteLine("Kjører GetOne():");
+            Console.WriteLine(selectStudent.GetOne(connection, 2));
+            Console.WriteLine("Kjører GetAll():");
+            var students = selectStudent.GetAll(connection);
+            foreach (var student in students)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine("Kjører GetStudentsByNamePart(\"pen\"):");
+            students = selectStudent.GetStudentsByNamePart(connection, "PEN");
             foreach (var student in students)
             {
                 Console.WriteLine(student);
