@@ -46,12 +46,12 @@
     <Compile Include="Data\MetadataSelect.cs" />
     <Compile Include="Data\Select.cs" />
     <Compile Include="Data\SelectStudent.cs" />
+    <Compile Include="Data\Terje.cs" />
     <Compile Include="DbModels\DbModels1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModels.tt</DependentUpon>
     </Compile>
-    <Compile Include="DbModels\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

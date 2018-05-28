@@ -1,7 +1,7 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Data" #>
-<#@ assembly name="c:\git\SelectFromDb\bin\Debug\SelectFromDb.Exe" #>
+<#@ assembly name="C:\Users\Terje\source\repos\SelectFromDb\SelectFromDb\bin\Debug\SelectFromDb.Exe" #>
 <#@ import namespace="SelectFromDb.Data" #>
 <#@ import namespace="SelectFromDb" #>
 <#@ import namespace="System.Data.SqlClient" #>
@@ -9,19 +9,19 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-
 namespace SelectFromDb.DbModels
 {
+// <#=Terje.X() #>
 <#
-var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=getitdemodb;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=geitdemodb;Integrated Security=True;";
 using (var connection = new SqlConnection(connectionString))
 {
 	connection.Open();
 	var tables = new MetadataSelect().GetAllTables(connection);
 	foreach(var table in tables) { 
 #>
-	class <#= table #> {}
-<#		}
-	}
+	public class <#= table #> {}
+<#	} // end foreach
+} // end using
 #>
 }

@@ -22,22 +22,6 @@ namespace SelectFromDb
 
         private static void RunDemo(SqlConnection connection)
         {
-            var selectStudent = new SelectStudent();
-
-            Console.WriteLine("Kjører GetOne():");
-            Console.WriteLine(selectStudent.GetOne(connection, 2));
-            Console.WriteLine("Kjører GetAll():");
-            var students = selectStudent.GetAll(connection);
-            foreach (var student in students)
-            {
-                Console.WriteLine(student);
-            }
-            Console.WriteLine("Kjører GetStudentsByNamePart(\"pen\"):");
-            students = selectStudent.GetStudentsByNamePart(connection, "PEN");
-            foreach (var student in students)
-            {
-                Console.WriteLine(student);
-            }
             Console.WriteLine("Kjører MetadataSelect.GetAllTables():");
             var metadataSelect = new MetadataSelect();
             var tables = metadataSelect.GetAllTables(connection);

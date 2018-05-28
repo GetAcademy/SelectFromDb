@@ -1,5 +1,7 @@
-﻿
-namespace SelectFromDb.DbModels
+﻿namespace SelectFromDb.DbModels
 {
-	class Student {}
+// Hei
+	public class Course {}
+	public class Student {}
+	public class StudentCourse {}
 }

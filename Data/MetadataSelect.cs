@@ -10,7 +10,7 @@ namespace SelectFromDb.Data
         public IEnumerable<string> GetAllTables(SqlConnection connection)
         {
             return GetMultiple(connection,
-                "SELECT TABLE_NAME as Name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = \'BASE TABLE\' AND TABLE_CATALOG =\'getitdemodb\'")
+                "SELECT TABLE_NAME as Name FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = \'BASE TABLE\' AND TABLE_CATALOG =\'geitdemodb\'")
                 .Select(t=>t.Name);
         }
     }
