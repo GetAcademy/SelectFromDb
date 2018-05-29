@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataAccess.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataAccess.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\MetadataSelect.cs" />
     <Compile Include="Data\Select.cs" />
     <Compile Include="Data\SelectStudent.cs" />
@@ -59,6 +64,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\DataAccess.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DataAccess.cs</LastGenOutput>
+    </Content>
     <Content Include="DbModels\DbModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DbModels1.cs</LastGenOutput>

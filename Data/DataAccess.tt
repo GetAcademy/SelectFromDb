@@ -9,35 +9,22 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
-using System;
+using SelectFromDb.Data;
+using SelectFromDb.DbModels;
 
-namespace SelectFromDb.DbModels
+namespace SelectFromDb.Data
 {
 <#
-string lastTableName = null;
 var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=geitdemodb;Integrated Security=True;";
 using (var connection = new SqlConnection(connectionString))
 {
 	connection.Open();
-	var tableFields = new MetadataSelect().GetAllTablesAndFields(connection);
-	foreach(var tableField in tableFields) { 
-		if(tableField.Table != lastTableName) {
-			if(lastTableName != null) {
+	var tableNames = new MetadataSelect().GetAllTables(connection);
+	foreach(var tableName in tableNames) { 
 #>
-	} // end generated class
-
-<#
-			}
-#>
-	public class <#= tableField.Table #> {
+	public partial class <#= tableName #>Select : Select<<#= tableName #>> {}
 <#
 		}
+}
 #>
-		<#= tableField.FieldType #> <#= tableField.FieldName #> { get; set; }
-<#	
-		lastTableName = tableField.Table;
-	} // end foreach
-} // end using
-#>
-	}
 }

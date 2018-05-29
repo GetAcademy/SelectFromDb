@@ -7,7 +7,14 @@ namespace SelectFromDb.Data
 {
     public class MetadataSelect : Select<TableField>
     {
-        public List<TableField> GetAllTables(SqlConnection connection)
+        public IEnumerable<string> GetAllTables(SqlConnection connection)
+        {
+            return GetMultiple(connection,
+                    "SELECT TABLE_NAME as [Table], '' FieldName, '' FieldType FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = \'BASE TABLE\' AND TABLE_CATALOG =\'geitdemodb\'")
+                .Select(tf=>tf.Table);
+        }
+
+        public List<TableField> GetAllTablesAndFields(SqlConnection connection)
         {
             return GetMultiple(connection,
                 "SELECT Table_Name [Table], Column_Name FieldName, DATA_TYPE FieldType FROM INFORMATION_SCHEMA.COLUMNS");
