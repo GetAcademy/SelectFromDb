@@ -9,19 +9,35 @@
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ output extension=".cs" #>
+using System;
+
 namespace SelectFromDb.DbModels
 {
-// <#=Terje.X() #>
 <#
+string lastTableName = null;
 var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=geitdemodb;Integrated Security=True;";
 using (var connection = new SqlConnection(connectionString))
 {
 	connection.Open();
-	var tables = new MetadataSelect().GetAllTables(connection);
-	foreach(var table in tables) { 
+	var tableFields = new MetadataSelect().GetAllTables(connection);
+	foreach(var tableField in tableFields) { 
+		if(tableField.Table != lastTableName) {
+			if(lastTableName != null) {
 #>
-	public class <#= table #> {}
-<#	} // end foreach
+	} // end generated class
+
+<#
+			}
+#>
+	public class <#= tableField.Table #> {
+<#
+		}
+#>
+		<#= tableField.FieldType #> <#= tableField.FieldName #> { get; set; }
+<#	
+		lastTableName = tableField.Table;
+	} // end foreach
 } // end using
 #>
+	}
 }
