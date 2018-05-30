@@ -4,7 +4,7 @@ using SelectFromDb.DbModels;
 
 namespace SelectFromDb.Data
 {
-    public class StudentSelect : Select<Student>
+    public partial class StudentSelect 
     {
         public List<Student> GetStudentsByNamePart(SqlConnection connection, string namePart)
         {

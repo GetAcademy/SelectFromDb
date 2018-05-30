@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <queries>
-  <query name="GetCoursesAndStudents">
+  <query DbModelName="StudentAndCourse">
     select s.Navn as StudentName, c.Navn as CourseName from student s
     join StudentCourse sc on sc.StudentId = s.Id
     join Course c on sc.CourseId = c.Id

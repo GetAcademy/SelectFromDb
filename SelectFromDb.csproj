@@ -50,7 +50,7 @@
     </Compile>
     <Compile Include="Data\MetadataSelect.cs" />
     <Compile Include="Data\Select.cs" />
-    <Compile Include="Data\SelectStudent.cs" />
+    <Compile Include="Data\StudentSelect.cs" />
     <Compile Include="Data\Terje.cs" />
     <Compile Include="DbModels\DbModels1.cs">
       <AutoGen>True</AutoGen>
@@ -68,6 +68,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DataAccess.cs</LastGenOutput>
     </Content>
+    <Content Include="Data\Queries.xml" />
     <Content Include="DbModels\DbModels.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DbModels1.cs</LastGenOutput>
